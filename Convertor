@@ -1,0 +1,16 @@
+import FreeSimpleGUI as fs
+label1 = fs.Text("Enter feet: ")
+input1 = fs.Input()
+
+label2 = fs.Text("Enter inches: ")
+input2 = fs.Input()
+
+compress_button = fs.Button("Convert")
+
+window = fs.Window("Convertor",
+                  layout=[[label1,imput1],
+                          [label2,imput2],
+                          [compress_button]])
+
+window.read()
+window.close()
