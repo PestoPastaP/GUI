@@ -1,6 +1,14 @@
 import functions
 import FreeSimpleGUI as sg
 import time
+import os
+
+if not os.path.exists("todos.txt"):
+    with open("todos.txt","w") as file:
+        pass
+#in Terminal type "pyinstaller --one file --windowed --clean gui.py" press Enter
+#right click gui.py-Open in-Explorer we can see the gui file as a .exe file that can run alone
+#Download HomeBrew then run the command "brew install --cask platypus" in Terminal.
 
 sg.theme("DarkPurple4")
 #search theme on google "freepysimplegui themes"
