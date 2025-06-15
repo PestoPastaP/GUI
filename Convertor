@@ -1,16 +1,35 @@
 import FreeSimpleGUI as fs
+from converters import convert
+
+fs.theme("Black")
+
 label1 = fs.Text("Enter feet: ")
-input1 = fs.Input()
+input1 = fs.Input(key="feet")
 
 label2 = fs.Text("Enter inches: ")
-input2 = fs.Input()
+input2 = fs.Input(key="inch")
 
 compress_button = fs.Button("Convert")
+exit_button = fs.Button("Exit")
+output_label = fs.Text(key="output")
 
 window = fs.Window("Convertor",
-                  layout=[[label1,imput1],
-                          [label2,imput2],
-                          [compress_button]])
+                layout=[[label1,imput1],
+                        [label2,imput2],
+                        [compress_button, exit_button, output_label]])
 
-window.read()
+while True:
+        try:
+                event, values = window.read()
+                match event:
+                    case "Exit":
+                        break
+                    case sg.WIN_CLOSED:
+                        break
+                feet = float(values["feet"])
+                inch = float(values["inch"])
+                result = convert(feet, inch)
+                window["output"].update(value=f"{result} m", text_color="white")
+        except IndexError:
+                fs.popup("Please provide two numbers.")
 window.close()
